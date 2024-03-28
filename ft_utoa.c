@@ -36,7 +36,6 @@ void    ft_utoa_w(unsigned int nb)
 			nb -= digito * len;
 			len /= 10;
 	}
-	write(1, "\n", 1);
 }
 
 //int	main(void)

@@ -18,22 +18,6 @@
 void	ft_xtoa_w(unsigned int nb);
 void    ft_utoa_w(unsigned int nb);
 
-//static int	count_buff(char const *s1)
-//{
-	//int	count;
-	//int	i;
-
-	//count = 0;
-	//i = 0;
-	//while (s1[i])
-	//{
-		//if (s1[i] == '%')
-			//count++;
-		//i++;
-	//}
-	//return (count);
-//}
-
 static void	(*get_str_num(char c))(unsigned int)
 {
 	//if (c == 'c')
@@ -81,5 +65,5 @@ void	ft_printf(char const *s1, ...)
 int	main(void)
 {
 	unsigned int nb = 0x45;
-	ft_printf("El primer numero es: %x, el segundo es: %x", nb, 0x6b);
+	ft_printf("El primer numero es: %u, el segundo es: %x", nb, 0x6b);
 }

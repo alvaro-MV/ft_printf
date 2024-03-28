@@ -31,7 +31,7 @@ static void	write_digit(unsigned int digito)
 	write(1, &ch, 1);
 }
 
-void	ft_xtoa_w(unsigned int nb)
+void	ft_xtoa_w(unsigned int nb) //Controlar el caso para X
 {
 	unsigned int	len;
 	unsigned int	digito;
