@@ -2,10 +2,7 @@
 
 int	main(void)
 {
-	int	pp = 24;
-	char	cc[] = pp;
-	int	i;
-	for (i = 0; i < 4; i++)
-		printf("what happend %c\n", cc[i]);
+	int	*cc;
+	printf("size of p: %zu", sizeof(cc));
 	return (0);
 }

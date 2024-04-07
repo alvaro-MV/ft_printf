@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/07 19:50:18 by alvaro            #+#    #+#             */
+/*   Updated: 2024/04/07 19:50:19 by alvaro           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 
 static unsigned int     get_len(unsigned int nb)
 {
-        unsigned int    holder;
-        unsigned int    hex;
+  unsigned int    holder;
+  unsigned int    hex;
 
-        hex = 1;
-        if (nb == 0)
-                nb += 10;
-        while (nb >= 1)
-        {
-                holder = nb / 10;
-                nb = holder;
-                hex *= 10;
-				//printf("nb: %u\thex: %u\n", nb, hex);
-        }
-        return (hex / 10);
+  hex = 1;
+  if (nb == 0)
+          nb += 10;
+  while (nb >= 1)
+  {
+          holder = nb / 10;
+          nb = holder;
+          hex *= 10;
+  //printf("nb: %u\thex: %u\n", nb, hex);
+  }
+  return (hex / 10);
 }
 
 void    ft_utoa_w(unsigned int nb)
