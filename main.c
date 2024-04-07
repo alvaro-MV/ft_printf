@@ -75,3 +75,5 @@ int	main(void)
 	printf("a ver con original: %p\n", str);
 	ft_printf("a ver con punteros: 0x%p\n", str); // overflow en 8.
 }
+
+//borra este comentario si lo ves
