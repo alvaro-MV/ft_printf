@@ -18,7 +18,7 @@ static unsigned int	get_len_hex(unsigned int nb)
 	return (hex / 0x10);
 }
 
-static void	write_digit(unsigned char digito)
+static void	write_digit(unsigned int digito)
 {
 	char	ch;
 	if (digito > 0 && digito <= 9)
