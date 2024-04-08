@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 19:50:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/08 23:04:28 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/04/01 13:26:43 by alvmoral          #+#    #+#             */
+/*   Updated: 2024/04/05 21:20:03 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINT_H
-# define LIBPRINT_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdarg.h>
-#include "libf/libft.h" //cambiar en 42.
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	t_list	*list;
 
-void	ft_xtoa_w(unsigned int nb);
-void	ft_utoa_w(unsigned int nb);
-void	ft_itoa_w(unsigned int nb);
-void	ft_ptoa_w(long long nb);
-void    ft_printf(char const *s1, ...);
-
-#endif
+	list = *lst;
+	new->next = list;
+	*lst = new;
+}
+//int	main()
+//{
+	//t_list	new = (t_list) {"c", NULL};
+	//t_list	*list = ft_lstnew("Hola");
+	//ft_lstadd_front(&list, &new);
+	//printf("conte: %s\n", (char *) new.content);
+	//printf("next: %s\n", (char *) new.next->content);	
+	//free(list);
+//}

@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 19:50:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/08 23:04:28 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/03/12 13:57:05 by alvmoral          #+#    #+#             */
+/*   Updated: 2024/04/06 14:59:53 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINT_H
-# define LIBPRINT_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdarg.h>
-#include "libf/libft.h" //cambiar en 42.
+void	ft_bzero(void *s, size_t n)
+{
+	if (n > 0)
+	{
+		while (n--)
+		{
+			*(char *) s = 0;
+			s++;
+		}
+	}
+}
 
-void	ft_xtoa_w(unsigned int nb);
-void	ft_utoa_w(unsigned int nb);
-void	ft_itoa_w(unsigned int nb);
-void	ft_ptoa_w(long long nb);
-void    ft_printf(char const *s1, ...);
+// int	main()
+// {
+// 	char	s[12] = "Hola";
+// 	char	ptr[12] = "Hola";
 
-#endif
+// 	ft_bzero(s, 3);
+// 	printf("size: %lu\t s: %s\n", sizeof(s), s);
+// 	bzero(ptr, 3);
+// 	printf("size: %lu\t ptr: %s\n", sizeof(ptr), ptr);
+// 	return (0);
+// }

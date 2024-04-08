@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 19:50:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/08 23:04:28 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/03/20 16:33:47 by alvmoral          #+#    #+#             */
+/*   Updated: 2024/04/06 15:00:06 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINT_H
-# define LIBPRINT_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdarg.h>
-#include "libf/libft.h" //cambiar en 42.
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	else
+		return (0);
+}
 
-void	ft_xtoa_w(unsigned int nb);
-void	ft_utoa_w(unsigned int nb);
-void	ft_itoa_w(unsigned int nb);
-void	ft_ptoa_w(long long nb);
-void    ft_printf(char const *s1, ...);
-
-#endif
+// int main()
+// {
+//     int c = 80 ;
+//     printf("mine: %d\n", ft_isalnum(c));
+//     printf("orig: %d", isalnum(c));
+// }

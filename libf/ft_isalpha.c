@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 19:50:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/08 23:04:28 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/03/20 16:13:34 by alvmoral          #+#    #+#             */
+/*   Updated: 2024/04/06 15:00:09 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINT_H
-# define LIBPRINT_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdarg.h>
-#include "libf/libft.h" //cambiar en 42.
+int	ft_isalpha(int c)
+{
+	if (c >= 65 && c <= 90)
+		return (1);
+	else if (c >= 97 && c <= 122)
+		return (1);
+	else
+		return (0);
+}
 
-void	ft_xtoa_w(unsigned int nb);
-void	ft_utoa_w(unsigned int nb);
-void	ft_itoa_w(unsigned int nb);
-void	ft_ptoa_w(long long nb);
-void    ft_printf(char const *s1, ...);
+// int main(void)
+// {
+// 	int	c;
 
-#endif
+// 	c = 102;
+//     printf("num: %d\n", isalpha(c));
+// 	printf("num: %d", ft_isalpha(c));
+//     return (0);
+// }
