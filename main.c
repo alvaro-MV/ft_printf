@@ -10,53 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libprintf.h"
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdarg.h>
-
-void	ft_xtoa_w(unsigned int nb);
-void    ft_utoa_w(unsigned int nb);
-
-//static int	count_buff(char const *s1)
-//{
-	//int	count;
-	//int	i;
-
-	//count = 0;
-	//i = 0;
-	//while (s1[i])
-	//{
-		//if (s1[i] == '%')
-			//count++;
-		//i++;
-	//}
-	//return (count);
-//}
 
 static void	(*get_str_num(char c))(unsigned int)
 {
-	//if (c == 'c')
-	//{
-		//c = va_arg(argum, char);
-		//write(1, &c, 1);
-	//}
-	//if (c == 's')
-		//ft_putstr_fd(va_arg(argum, char*), 1);
-	//if (c == 'i')
-		//ft_itoa(va_arg(argum, int));
+	if (c == 'i' || c == 'd')
+		return (&ft_itoa_w);
 	if (c == 'u')
 		return (&ft_utoa_w);
-	if (c == 'x')
+	if (c == 'x' || c == 'p')
 		return (&ft_xtoa_w);
 	return (NULL);
 }
 
+/*
+.n para el numero de ceros antes del numero.
+/0, /200 para interpretar codigo ascii.
+
+If successful, the total number of characters written is returned. 
+On failure, a negative number is returned.
+
+Comprobar que no ponga '-' al final y que va_arg termine correctamente en 
+la funcion.
+*/
 void	ft_printf(char const *s1, ...)
 {
 	int		i;
 	va_list	argum;
 	char	tp;
+	//void	*ptr;
 
 	i = 0;
 	va_start(argum, s1);
@@ -65,11 +48,18 @@ void	ft_printf(char const *s1, ...)
 		if (s1[i] == '%')
 		{
 			tp = s1[i + 1];
-			if (tp)
-			{
+			if (tp == 'u' || tp == 'x' || tp == 'X' 
+			|| tp == 'd' || tp == 'i')
 				get_str_num(tp)(va_arg(argum, unsigned int));
-				i += 2;
+			else if (tp == 'p')
+			{
+				ft_ptoa_w(va_arg(argum, long long));
 			}
+			else if (tp == 's')
+				ft_putstr_fd((char *) va_arg(argum, char *), 1);
+			else if (tp == 'c')
+				ft_putchar_fd(va_arg(argum, int), 1);
+			i +=2;
 		}
 		write(1, &s1[i], 1);
 		i++;
@@ -80,6 +70,10 @@ void	ft_printf(char const *s1, ...)
 
 int	main(void)
 {
-	unsigned int nb = 0x45;
-	ft_printf("El primer numero es: %x, el segundo es: %x", nb, 0x6b);
+	char	str[] = "HOla, adios.";
+	//ft_printf("El primer numero es: %i, el segundo es: %x ", nb, 0x6b);
+	printf("a ver con original: %p\n", str);
+	ft_printf("a ver con punteros: 0x%p\n", str); // overflow en 8.
 }
+
+//borra este comentario si lo ves

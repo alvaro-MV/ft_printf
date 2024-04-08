@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_xtoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/07 19:50:13 by alvaro            #+#    #+#             */
+/*   Updated: 2024/04/07 19:50:14 by alvaro           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 
@@ -14,6 +26,7 @@ static unsigned int	get_len_hex(unsigned int nb)
 		holder = nb / 0x10;
 		nb = holder;
 		hex *= 0x10;
+		//printf("len evol --> nb: %lx,  hex: %lx\n", nb, hex);
 	}
 	return (hex / 0x10);
 }
@@ -31,7 +44,7 @@ static void	write_digit(unsigned int digito)
 	write(1, &ch, 1);
 }
 
-void	ft_xtoa_w(unsigned int nb)
+void	ft_xtoa_w(unsigned int nb) //Controlar el caso para X
 {
 	unsigned int	len;
 	unsigned int	digito;
@@ -41,15 +54,17 @@ void	ft_xtoa_w(unsigned int nb)
 	while (len > 0)
 	{
 		digito = nb / len;
+		//printf("digito: u %u, x %x\n", digito, digito);
 		write_digit(digito);
-		nb -= digito * 0x10;
+		nb -= digito * len;
+		//printf("nb: %lx\n", nb);
 		len /= 0x10;
 	}
 }
 
 //int	main(void)
 //{
-	//unsigned int	nb = 90;
+	//unsigned int	nb = 0x7f89;
 	//printf("nb: %x\n", nb);
 	//ft_xtoa_w(nb);
 //}
