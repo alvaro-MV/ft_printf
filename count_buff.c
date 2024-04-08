@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_buff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:53:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/03/27 16:27:51by alvaro           ###   ########.fr       */
+/*   Updated: 2024/04/08 14:12:54 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,21 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdarg.h>
+#include "../libft/final_repo_evaluation/libft.h"
 
 void	ft_xtoa_w(unsigned int nb);
-void    ft_utoa_w(unsigned int nb);
+void	ft_utoa_w(unsigned int nb);
+void	ft_write_char(unsigned int s);
 
-//static int	count_buff(char const *s1)
-//{
-	//int	count;
-	//int	i;
 
-	//count = 0;
-	//i = 0;
-	//while (s1[i])
-	//{
-		//if (s1[i] == '%')
-			//count++;
-		//i++;
-	//}
-	//return (count);
-//}
-
-static void	(*get_str_num(char c))(unsigned int)
-{
+static void	(*get_str_num(char c))(char*)
 	//if (c == 'c')
 	//{
 		//c = va_arg(argum, char);
 		//write(1, &c, 1);
 	//}
-	//if (c == 's')
-		//ft_putstr_fd(va_arg(argum, char*), 1);
+	if (c == 's')
+		return (&ft_write_char);
 	//if (c == 'i')
 		//ft_itoa(va_arg(argum, int));
 	if (c == 'u')
@@ -80,6 +66,8 @@ void	ft_printf(char const *s1, ...)
 
 int	main(void)
 {
-	unsigned int nb = 0x45;
-	ft_printf("El primer numero es: %x, el segundo es: %x", nb, 0x6b);
+	unsigned int	nb = 45;
+	char			s[] = "por ejemplo, esto";
+
+	ft_printf("El primer numero es: %u, el segundo es: %x. Ahora repro el str: %s", nb, s);
 }
