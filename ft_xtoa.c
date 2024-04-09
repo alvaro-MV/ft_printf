@@ -6,11 +6,13 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:13 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 14:59:12 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/09 19:43:33 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "toa.h"
+#include "_toa.h"
+#include <stdio.h>
+
 static unsigned int	get_len_hex(unsigned int nb)
 {
 	unsigned int	holder;
@@ -33,7 +35,7 @@ static int	write_digit(unsigned int digito)
 {
 	char	ch;
 
-	if (digito > 0 && digito <= 9)
+	if (digito >= 0 && digito <= 9)
 		ch = digito + '0';
 	else
 	{
@@ -52,13 +54,14 @@ int	ft_xtoa_w(unsigned int nb) //Controlar el caso para X
 	contador = 0;
 	//printf("nbi: %i   nbx: %x\n", nb, nb);
 	len = get_len_hex(nb);
+	write(1, "0x", 2);
 	while (len > 0)
 	{
 		digito = nb / len;
 		//printf("digito: u %u, x %x\n", digito, digito);
 		contador += write_digit(digito);
 		nb -= digito * len;
-		//printf("nb: %lx\n", nb);
+		//printf("nb: %x\n", nb);
 		len /= 0x10;
 	}
 	return (contador);

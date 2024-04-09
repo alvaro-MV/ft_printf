@@ -6,11 +6,11 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:02 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 14:58:35 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/09 20:03:23 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "toa.h"
+#include "_toa.h"
 
 static long long	get_len_hex(long long nb)
 {
@@ -30,7 +30,7 @@ static long long	get_len_hex(long long nb)
 	return (hex / 0x10);
 }
 
-static int	write_digit(long long digito)
+static int	write_digit(long long digito, char c)
 {
 	char	ch;
 
@@ -40,11 +40,13 @@ static int	write_digit(long long digito)
 	{
 		digito = digito - 10;
 		ch = digito + 'a';
+		if (c == 'X')
+			ch = digito + 'A';
 	}
 	return (write(1, &ch, 1));
 }
 
-int	ft_ptoa_w(long long nb) //Controlar el caso para X
+int	ft_ptoa_w(long long nb, char c) //Controlar el caso para X
 {
 	long long	len;
 	long long	digito;
@@ -53,12 +55,13 @@ int	ft_ptoa_w(long long nb) //Controlar el caso para X
 	contador = 0;
 	//printf("nbi: %lli   nbx: %llx\n", nb, nb);
 	len = get_len_hex(nb);
+	write(1, "0x", 2);
 	//printf("len: %llx", len);
 	while (len > 0x0)
 	{
 		digito = nb / len;
 		//printf("digito: u %llu, x %llx\n", digito, digito);
-		contador += write_digit(digito);
+		contador += write_digit(digito, c);
 		nb -= digito * len;
 		//printf("nb: %llx\n", nb);
 		len /= 0x10;

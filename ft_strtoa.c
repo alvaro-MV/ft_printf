@@ -6,11 +6,12 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 14:38:56 by alvmoral          #+#    #+#             */
-/*   Updated: 2024/04/09 14:58:53 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/09 18:42:21 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "toa.h"
+#include "_toa.h"
+#include <stdio.h>
 
 int	ft_strtoa_w(char const *str, char c)
 {

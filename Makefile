@@ -12,7 +12,8 @@ FRM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror -I.
 
-CORE_FILES = ft_itoa.c ft_ptoa.c ft_utoa.c ft_xtoa.c printf.c ft_strtoa.c 
+CORE_FILES = ft_itoa.c ft_ptoa.c ft_utoa.c ft_xtoa.c \
+	ft_printf.c ft_strtoa.c ft_chtoa.c 
 
 CORE_OBJS = $(patsubst %.c, %.o, $(CORE_FILES))
 LIBFT_LIB = $(addprefix $(LIBFT), $(LIBFT_NAME))

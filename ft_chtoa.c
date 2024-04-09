@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_chtoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 22:30:52 by alvmoral          #+#    #+#             */
-/*   Updated: 2024/04/09 20:17:51 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/04/09 19:15:35 by alvmoral          #+#    #+#             */
+/*   Updated: 2024/04/09 19:47:05 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "_toa.h"
 
-int	ft_printf(char const *s1, ...);
-
-int	main(void)
+int	ft_chtoa_w(unsigned int c)
 {
-	ft_printf("El numero elegio es: %u", 987);
-	printf("El tiempo negativo: %u", -987);
+	int	counter;
+	int	chr;
+
+	chr = c;
+	counter = write(1, &chr, 1);
+	return (counter);
 }
-
-

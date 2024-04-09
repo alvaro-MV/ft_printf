@@ -6,27 +6,21 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:18 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 14:59:02 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/09 20:13:03 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "toa.h"
+#include "_toa.h"
 
 static unsigned int	get_len(unsigned int nb)
 {
-	unsigned int    holder;
 	unsigned int    hex;
 
 	hex = 1;
 	if (nb == 0)
-		nb += 10;
-	while (nb >= 1)
-	{
-		holder = nb / 10;
-		nb = holder;
 		hex *= 10;
-		//printf("nb: %u\thex: %u\n", nb, hex);
-	}
+	while (hex <= nb)
+		hex *= 10;
 	return (hex / 10);
 }
 

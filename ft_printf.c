@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_buff.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:53:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/03/27 16:27:51by alvaro           ###   ########.fr       */
+/*   Updated: 2024/04/09 20:00:31 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static int	(*get_str_num(char c))(unsigned int)
 		return (&ft_itoa_w);
 	if (c == 'u')
 		return (&ft_utoa_w);
-	if (c == 'x' || c == 'p')
-		return (&ft_xtoa_w);
+	// if (c == 'x' || c == 'p')
+	// 	return (&ft_xtoa_w);
+	if (c == 'c')
+		return (&ft_chtoa_w);
 	return (NULL);
 }
 
@@ -32,7 +34,10 @@ On failure, a negative number is returned.
 
 Comprobar que no ponga '-' al final y que va_arg termine correctamente en 
 la funcion.
+
+Comprobar con /0, NULL, negativos raros, overflows, etc.
 */
+
 int	ft_printf(char const *s1, ...)
 {
 	int		i;
@@ -48,20 +53,21 @@ int	ft_printf(char const *s1, ...)
 		if (s1[i] == '%')
 		{
 			tp = s1[i + 1];
-			if (tp == 'u' || tp == 'x' || tp == 'X'
-				|| tp == 'd' || tp == 'i')
+			if (tp == 'u' || tp == 'd' || tp == 'i' || tp == 'c')
 				counter += get_str_num(tp)(va_arg(argum, unsigned int));
-			else if (tp == 'p')
+			else if (tp == 'p' || tp == 'x' || tp == 'X')
 				counter += ft_ptoa_w(va_arg(argum, long long));
-			else if (tp == 's' || tp == 'c')
-				ft_strtoa_w(va_arg(argum, char *), tp);
+			else if (tp == 's')
+				counter += ft_strtoa_w(va_arg(argum, char *), tp);
 			i += 2;
 		}
-		write(1, &s1[i], 1);
-		i++;
+		if (s1[i])
+		{
+			write(1, &s1[i], 1);
+			i++;
+		}
 	}
 	write(1, "\n", 1);
 	va_end(argum);
 	return (counter);
 }
-
