@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprintf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
-static void	(*get_str_num(char c))(unsigned int)
+static int	(*get_str_num(char c))(unsigned int)
 {
 	if (c == 'i' || c == 'd')
 		return (&ft_itoa_w);
@@ -34,36 +33,35 @@ On failure, a negative number is returned.
 Comprobar que no ponga '-' al final y que va_arg termine correctamente en 
 la funcion.
 */
-void	ft_printf(char const *s1, ...)
+int	ft_printf(char const *s1, ...)
 {
 	int		i;
 	va_list	argum;
 	char	tp;
-	//void	*ptr;
+	int		counter;
 
 	i = 0;
+	counter = 0;
 	va_start(argum, s1);
 	while (s1[i])
 	{
 		if (s1[i] == '%')
 		{
 			tp = s1[i + 1];
-			if (tp == 'u' || tp == 'x' || tp == 'X' 
-			|| tp == 'd' || tp == 'i')
-				get_str_num(tp)(va_arg(argum, unsigned int));
+			if (tp == 'u' || tp == 'x' || tp == 'X'
+				|| tp == 'd' || tp == 'i')
+				counter += get_str_num(tp)(va_arg(argum, unsigned int));
 			else if (tp == 'p')
-			{
-				ft_ptoa_w(va_arg(argum, long long));
-			}
-			else if (tp == 's')
-				ft_putstr_fd((char *) va_arg(argum, char *), 1);
-			else if (tp == 'c')
-				ft_putchar_fd(va_arg(argum, int), 1);
-			i +=2;
+				counter += ft_ptoa_w(va_arg(argum, long long));
+			else if (tp == 's' || tp == 'c')
+				ft_strtoa_w(va_arg(argum, char *), tp);
+			i += 2;
 		}
 		write(1, &s1[i], 1);
 		i++;
 	}
 	write(1, "\n", 1);
 	va_end(argum);
+	return (counter);
 }
+

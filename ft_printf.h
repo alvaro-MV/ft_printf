@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 22:30:52 by alvmoral          #+#    #+#             */
-/*   Updated: 2024/04/09 14:46:33 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/04/07 19:50:08 by alvaro            #+#    #+#             */
+/*   Updated: 2024/04/09 14:59:28 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include "libf/libft.h"
 
-int	main(void)
-{
-	ft_printf("El primer numero es: %i, el segundo es: %x ", 48, 0x6b);
-	ft_printf("a ver con original: %p\n", "HOLA");
-	ft_printf("a ver con punteros: 0x%p\n", "str"); 
-}
+int	ft_xtoa_w(unsigned int nb);
+int	ft_utoa_w(unsigned int nb);
+int	ft_itoa_w(unsigned int nb);
+int	ft_ptoa_w(long long nb);
+int	ft_printf(char const *s1, ...);
+int	ft_strtoa_w(char const *str, char c);
 
+#endif

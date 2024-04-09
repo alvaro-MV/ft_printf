@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 22:30:52 by alvmoral          #+#    #+#             */
-/*   Updated: 2024/04/09 14:46:33 by alvmoral         ###   ########.fr       */
+/*   Created: 2024/04/09 14:38:56 by alvmoral          #+#    #+#             */
+/*   Updated: 2024/04/09 14:58:53 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "toa.h"
 
-int	main(void)
+int	ft_strtoa_w(char const *str, char c)
 {
-	ft_printf("El primer numero es: %i, el segundo es: %x ", 48, 0x6b);
-	ft_printf("a ver con original: %p\n", "HOLA");
-	ft_printf("a ver con punteros: 0x%p\n", "str"); 
-}
+	int	contador;
 
+	contador = 0;
+	if (c == 'c')
+		contador += write(1, str, 1);
+	else if (c == 's')
+		contador += write(1, str, ft_strlen(str));
+	return (contador);
+}
