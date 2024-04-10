@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:02 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/10 00:26:38 by alvaro           ###   ########.fr       */
+/*   Updated: 2024/04/10 14:50:12 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_ptoa_w(long long nb, char c) //Controlar el caso para X
 	contador = 0;
 	//printf("nbi: %lli   nbx: %llx\n", nb, nb);
 	len = get_len_hex(nb);
-	write(1, "0x", 2);
+	contador += write(1, "0x", 2);
 	//printf("len: %llx", len);
 	while (len > 0x0)
 	{

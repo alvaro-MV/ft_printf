@@ -1,2 +1,5 @@
 a.out*
 .vscode
+printf-unit-test
+printfTester
+*.o

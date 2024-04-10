@@ -6,14 +6,14 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 19:17:22 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 13:51:21 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include "libf/libft.h"
+# include "libft/libft.h"
 
 int	ft_xtoa_w(unsigned int nb);
 int	ft_utoa_w(unsigned int nb);

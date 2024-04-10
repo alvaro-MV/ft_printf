@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-LIBFT = libf/
+LIBFT = libft/
 
 LIBFT_NAME = libft.a
 

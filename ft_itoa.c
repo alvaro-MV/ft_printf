@@ -6,7 +6,7 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:27 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 15:09:11 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 12:40:24 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	get_len(long nb)
 {
-	long	number;
+	int		number;
 	long	dec;
 
 	number = (long) nb;
@@ -48,7 +48,7 @@ int	ft_itoa_w(unsigned int nb)
 	while (dlen > 0)
 	{
 		digit = lnb / dlen;
-		//printf("digito: %li\n", digit);
+		//printf("digito: %li,  lnb: %li,  dlen: %i\n", digit ,lnb, dlen);
 		print_digit = digit + '0';
 		contador += write(1, &print_digit, 1);
 		lnb -= digit * dlen;
