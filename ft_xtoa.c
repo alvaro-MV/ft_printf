@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_xtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:13 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 19:43:33 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 00:26:31 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	write_digit(unsigned int digito)
 {
 	char	ch;
 
-	if (digito >= 0 && digito <= 9)
+	if (digito <= 9)
 		ch = digito + '0';
 	else
 	{

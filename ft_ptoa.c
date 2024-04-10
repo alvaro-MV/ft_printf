@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:02 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 20:03:23 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 00:26:38 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	write_digit(long long digito, char c)
 {
 	char	ch;
 
-	if (digito > 0 && digito <= 9)
+	if (digito <= 9)
 		ch = digito + '0';
 	else
 	{

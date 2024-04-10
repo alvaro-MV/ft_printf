@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:18 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/09 20:13:03 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 02:11:59 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_utoa_w(unsigned int nb)
 	unsigned char	print_digit;
 	int				contador;
 
+	printf("entra");
 	len = get_len(nb);
 	contador = 0;
 	while (len > 0)
