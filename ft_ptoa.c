@@ -6,16 +6,16 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:02 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/10 14:50:12 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:25:13 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_toa.h"
 
-static long long	get_len_hex(long long nb)
+static long long	get_len_hex(unsigned long long nb)
 {
-	long long	holder;
-	long long	hex;
+	unsigned long long	holder;
+	unsigned long long	hex;
 
 	hex = 0x01;
 	if (nb == 0x00)
@@ -30,7 +30,7 @@ static long long	get_len_hex(long long nb)
 	return (hex / 0x10);
 }
 
-static int	write_digit(long long digito, char c)
+static int	write_digit(unsigned long long digito, char c)
 {
 	char	ch;
 
@@ -46,11 +46,11 @@ static int	write_digit(long long digito, char c)
 	return (write(1, &ch, 1));
 }
 
-int	ft_ptoa_w(long long nb, char c) //Controlar el caso para X
+int	ft_ptoa_w(unsigned long long nb, char c) //Controlar el caso para X
 {
-	long long	len;
-	long long	digito;
-	int			contador;
+	unsigned long long	len;
+	unsigned long long	digito;
+	int					contador;
 	
 	contador = 0;
 	//printf("nbi: %lli   nbx: %llx\n", nb, nb);

@@ -6,7 +6,7 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:27 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/10 12:40:24 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:11:48by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	get_len(long nb)
 {
-	int		number;
+	long	number;
 	long	dec;
 
 	number = (long) nb;
@@ -33,8 +33,8 @@ int	ft_itoa_w(unsigned int nb)
 	long	digit;
 	int		dlen;
 	long	lnb;
-	char	print_digit;		
-	int		contador;
+	char	print_digit;
+	int		contador;	
 
 	lnb = (int) nb;
 	dlen = get_len(nb);
@@ -42,13 +42,13 @@ int	ft_itoa_w(unsigned int nb)
 	//printf("lnb: %li\n", lnb);
 	if (lnb < 0)
 	{
-		write(1, "-", 1);
+		contador += write(1, "-", 1);
 		lnb = (~lnb) + 1;
 	}
 	while (dlen > 0)
 	{
 		digit = lnb / dlen;
-		//printf("digito: %li,  lnb: %li,  dlen: %i\n", digit ,lnb, dlen);
+		//printf("digito: %li\n", digit);
 		print_digit = digit + '0';
 		contador += write(1, &print_digit, 1);
 		lnb -= digit * dlen;
@@ -57,7 +57,51 @@ int	ft_itoa_w(unsigned int nb)
 	return (contador);
 }
 
-//int	main(void)
-//{
-	//ft_itoa_w(-8997845);
-//}
+// static int	get_len(int number)
+// {
+// 	long	dec;
+
+// 	dec = 1;
+// 	if (number < 0)
+// 		number *= -1;
+// 	if (number == 0)
+// 		dec *= 10;
+// 	while (dec <= number)
+// 		dec *= 10;
+// 	return (dec / 10);
+// }
+
+// void	manage_negatives(int *lnb, int *contador)
+// {
+// 	if (*lnb < 0)
+// 	{
+// 		*contador += write(1, "-", 1);
+// 		*lnb = *lnb * -1;
+// 	}
+// }
+
+// int	ft_itoa_w(unsigned int nb)
+// {
+// 	long			digit;
+// 	int				dlen;
+// 	long			lnb;
+// 	unsigned char	print_digit;
+// 	int				contador;
+
+// 	lnb = (int) nb;
+// 	dlen = get_len(lnb);
+// 	contador = 0;
+// 	printf("lnb: %li\n", lnb);
+// 	manage_negatives(&lnb, &contador);
+// 	if (lnb == 2147483648)
+// 	while (dlen > 0)
+// 	{
+// 		digit = lnb / dlen;
+// 		//printf("digito: %li,  lnb: %li,  dlen: %i\n", digit ,lnb, dlen);
+// 		print_digit = digit + '0';
+// 		contador += write(1, &print_digit, 1);
+// 		lnb -= digit * dlen;
+// 		dlen /= 10;
+// 	}
+// 	return (contador);
+// }

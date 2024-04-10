@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_xtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvaro <alvaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:13 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/10 00:26:31 by alvaro           ###   ########.fr       */
+/*   Updated: 2024/04/10 17:32:48 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 
 static unsigned int	get_len_hex(unsigned int nb)
 {
-	unsigned int	holder;
 	unsigned int	hex;
 
 	hex = 0x01;
 	if (nb == 0x00)
-		nb += 0x10;
-	while (nb >= 0x01)
+		hex *= 0x10;
+	while (hex <= nb)
 	{
-		holder = nb / 0x10;
-		nb = holder;
 		hex *= 0x10;
 		//printf("len evol --> nb: %lx,  hex: %lx\n", nb, hex);
 	}
@@ -54,7 +51,6 @@ int	ft_xtoa_w(unsigned int nb) //Controlar el caso para X
 	contador = 0;
 	//printf("nbi: %i   nbx: %x\n", nb, nb);
 	len = get_len_hex(nb);
-	write(1, "0x", 2);
 	while (len > 0)
 	{
 		digito = nb / len;
