@@ -2,6 +2,5 @@ a.out*
 .vscode
 printf-unit-test
 pruebas.c
-.gitignore
 printfTester
 *.o
