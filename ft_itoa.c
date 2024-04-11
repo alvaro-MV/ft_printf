@@ -12,7 +12,7 @@
 
 #include "_toa.h"
 
-static int	get_len(long nb)
+static int	get_len(int nb)
 {
 	long	number;
 	long	dec;
@@ -28,48 +28,32 @@ static int	get_len(long nb)
 	return (dec / 10);
 }
 
-int	ft_itoa_w(unsigned int nb)
+int	ft_itoa_w(int nb)
 {
-	long	digit;
 	int		dlen;
+	int		contador;
 	long	lnb;
-	char	print_digit;
-	int		contador;	
+	int		digit;
+	char	printed_digit;
 
-	lnb = (int) nb;
 	dlen = get_len(nb);
+	lnb = (long) nb;
 	contador = 0;
-	//printf("lnb: %li\n", lnb);
 	if (lnb < 0)
 	{
 		contador += write(1, "-", 1);
-		lnb = (~lnb) + 1;
+		lnb *= -1;
 	}
 	while (dlen > 0)
 	{
 		digit = lnb / dlen;
-		//printf("digito: %li\n", digit);
-		print_digit = digit + '0';
-		contador += write(1, &print_digit, 1);
+		printed_digit = digit + '0';
+		contador += write(1, &printed_digit, 1);
 		lnb -= digit * dlen;
 		dlen /= 10;
 	}
 	return (contador);
 }
-
-// static int	get_len(int number)
-// {
-// 	long	dec;
-
-// 	dec = 1;
-// 	if (number < 0)
-// 		number *= -1;
-// 	if (number == 0)
-// 		dec *= 10;
-// 	while (dec <= number)
-// 		dec *= 10;
-// 	return (dec / 10);
-// }
 
 // void	manage_negatives(int *lnb, int *contador)
 // {

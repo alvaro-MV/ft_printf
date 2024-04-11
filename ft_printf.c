@@ -6,7 +6,7 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:53:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/10 17:32:05 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/11 13:31:50 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 static int	(*get_str_num(char c))(unsigned int)
 {
-	if (c == 'i' || c == 'd')
-		return (&ft_itoa_w);
 	if (c == 'u')
 		return (&ft_utoa_w);
 	if (c == 'c')
 		return (&ft_chtoa_w);
-	if (c == 'x' || c == 'X')
-		return (&ft_xtoa_w);
+	// if (c == 'x' || c == 'X')
+	// 	return (&ft_xtoa_w);
 	return (NULL);
 }
 
@@ -40,26 +38,29 @@ Comprobar con /0, NULL, negativos raros, overflows, etc.
 
 int	ft_printf(char const *s1, ...)
 {
-	int		i;
-	va_list	argum;
-	char	format;
-	int		counter;
+	size_t		i;
+	va_list		argum;
+	char		format;
+	int			counter;
 
 	i = 0;
 	counter = 0;
 	va_start(argum, s1);
 	while (s1[i])
 	{
-		if (s1[i] == '%')
+		if (s1[i] == '%' && i <= ft_strlen(s1) - 1)
 		{
 			format = s1[i + 1];
-			if (format == 'u' || format == 'd' || format == 'i'
-				|| format == 'c' || format == 'x' || format == 'X')
+			if (format == 'u' || format == 'c')
 				counter += get_str_num(format)(va_arg(argum, unsigned int));
+			if (format == 'x' || format == 'X')
+				counter += ft_xtoa_w(va_arg(argum, unsigned int), format);
 			else if (format == 'p')
 				counter += ft_ptoa_w(va_arg(argum, unsigned long long));
 			else if (format == 's')
 				counter += ft_strtoa_w(va_arg(argum, char *), format);
+			else if (format == 'i' || format == 'd')
+				counter += ft_itoa_w(va_arg(argum, int));
 			else if (format == '%')
 				counter += write(1, &format, 1);
 			i += 2;
