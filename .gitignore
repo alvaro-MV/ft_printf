@@ -1,6 +1,0 @@
-a.out*
-.vscode
-printf-unit-test
-pruebas.c
-printfTester
-*.o

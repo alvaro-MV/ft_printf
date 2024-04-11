@@ -6,7 +6,7 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:13 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/11 13:42:32 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:04:23 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static unsigned int	get_len_hex(unsigned int nb)
 		holder = nb / 0x10;
 		nb = holder;
 		hex *= 0x10;
-		//printf("len evol --> nb: %lx,  hex: %lx\n", nb, hex);
 	}
 	return (hex / 0x10);
 }
@@ -47,31 +46,20 @@ static int	write_digit(unsigned int digito, char c)
 	return (write(1, &ch, 1));
 }
 
-int	ft_xtoa_w(unsigned int nb, char c) //Controlar el caso para X
+int	ft_xtoa_w(unsigned int nb, char c)
 {
 	unsigned int	len;
 	unsigned int	digito;
 	int				contador;
 
 	contador = 0;
-	//printf("nbi: %i   nbx: %x\n", nb, nb);
 	len = get_len_hex(nb);
 	while (len > 0x0)
 	{
 		digito = nb / len;
-		//printf("digito: u %u, x %x\n", digito, digito);
 		contador += write_digit(digito, c);
 		nb -= digito * len;
-		//printf("nb: %x\n", nb);
 		len /= 0x10;
 	}
 	return (contador);
 }
-
-// int	main(void)
-// {
-// 	unsigned int	nb = 938886664;
-	
-// 	printf("nb: %x\n", nb);
-// 	ft_xtoa_w(nb, 'x');
-// }
