@@ -6,7 +6,7 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:15:35 by alvmoral          #+#    #+#             */
-/*   Updated: 2024/04/09 19:47:05 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:11:23 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	ft_chtoa_w(unsigned int c)
 {
 	int	counter;
-	int	chr;
 
-	chr = c;
-	counter = write(1, &chr, 1);
+	counter = write(1, &c, 1);
 	return (counter);
 }

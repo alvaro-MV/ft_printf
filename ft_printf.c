@@ -6,22 +6,11 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:53:08 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/11 13:31:50 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:25:05 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	(*get_str_num(char c))(unsigned int)
-{
-	if (c == 'u')
-		return (&ft_utoa_w);
-	if (c == 'c')
-		return (&ft_chtoa_w);
-	// if (c == 'x' || c == 'X')
-	// 	return (&ft_xtoa_w);
-	return (NULL);
-}
 
 /*
 .n para el numero de ceros antes del numero.
@@ -48,28 +37,27 @@ int	ft_printf(char const *s1, ...)
 	va_start(argum, s1);
 	while (s1[i])
 	{
-		if (s1[i] == '%' && i <= ft_strlen(s1) - 1)
+		if (s1[i] == '%' && s1[i++] != '\0')
 		{
-			format = s1[i + 1];
-			if (format == 'u' || format == 'c')
-				counter += get_str_num(format)(va_arg(argum, unsigned int));
-			if (format == 'x' || format == 'X')
+			format = s1[i];
+			if (format == 'u')
+				counter += ft_utoa_w(va_arg(argum, unsigned int));
+			else if (format == 'x' || format == 'X')
 				counter += ft_xtoa_w(va_arg(argum, unsigned int), format);
 			else if (format == 'p')
 				counter += ft_ptoa_w(va_arg(argum, unsigned long long));
 			else if (format == 's')
-				counter += ft_strtoa_w(va_arg(argum, char *), format);
+				counter += ft_strtoa_w(va_arg(argum, char *));
+			else if (format == 'c')
+				counter += ft_chtoa_w(va_arg(argum, int));
 			else if (format == 'i' || format == 'd')
 				counter += ft_itoa_w(va_arg(argum, int));
 			else if (format == '%')
 				counter += write(1, &format, 1);
-			i += 2;
 		}
-		if (s1[i])
-		{
+		else
 			counter += write(1, &s1[i], 1);
-			i++;
-		}
+		i++;
 	}
 	va_end(argum);
 	return (counter);
