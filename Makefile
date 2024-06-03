@@ -1,32 +1,33 @@
 NAME = libftprintf.a
 
-LIBFT = libft/
-
-LIBFT_NAME = libft.a
-
-CC = gcc
-
-PACK = ar rcs
-
-FRM = rm -rf
-
-CFLAGS = -Wall -Wextra -Werror -I.
-
-CORE_FILES = ft_itoa.c ft_ptoa.c ft_utoa.c ft_xtoa.c \
+SRCS = ft_itoa.c ft_ptoa.c ft_utoa.c ft_xtoa.c \
 	ft_printf.c ft_strtoa.c ft_chtoa.c 
 
-CORE_OBJS = $(patsubst %.c, %.o, $(CORE_FILES))
-LIBFT_LIB = $(addprefix $(LIBFT), $(LIBFT_NAME))
-$(NAME): $(CORE_OBJS)
-	@make all -C $(LIBFT)
-	@mv $(LIBFT_LIB) $(NAME) ||:
-	$(PACK) $(NAME) $(CORE_OBJS)
+
+CC = cc
+
+# Opciones de compilación
+CFLAGS = -Wall -Wextra -Werror
+
+# Directorio de archivos fuente
+SRCDIR = .
+
+OBJS = $(SRCS:.c=.o)
+
 all: $(NAME)
+
+$(NAME): $(OBJS)
+	ar rcs $@ $^
+
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	@make clean -C $(LIBFT)
-	$(FRM) $(CORE_OBJS)
+	rm -f $(OBJS) $(OBJS_BONUS)
+
 fclean: clean
-	@make fclean -C $(LIBFT)
-	$(FRM) $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
+
 re: fclean all
-.PHONY: re clean fclean all
+
+.PHONY: all clean fclean re 

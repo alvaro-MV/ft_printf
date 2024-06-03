@@ -31,11 +31,14 @@ static void	write_arguments(char const *s1, va_list argum, int *counter)
 		*counter += ft_itoa_w(va_arg(argum, int));
 	else if (format == '%')
 		*counter += write(1, &format, 1);
+	else
+		return ;
 }
 
 int	ft_printf(char const *s1, ...)
 {
 	int		counter;
+	int		control;
 	size_t	i;
 	va_list	argum;
 
@@ -45,7 +48,12 @@ int	ft_printf(char const *s1, ...)
 	while (s1[i])
 	{
 		if (s1[i] == '%' && s1[i++] != '\0')
+		{
+			control = counter;
 			write_arguments(&s1[i], argum, &counter);
+			if (control > counter)
+				return (-1);
+		}
 		else
 			counter += write(1, &s1[i], 1);
 		i++;

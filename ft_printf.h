@@ -13,7 +13,8 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include "libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 
 int	ft_xtoa_w(unsigned int nb, char c);
 int	ft_utoa_w(unsigned int nb);

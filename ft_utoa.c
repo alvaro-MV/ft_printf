@@ -28,11 +28,9 @@ int	ft_utoa_w(unsigned int nb)
 {
 	unsigned int	len;
 	unsigned long	digito;
-	unsigned long	lnb;
 	unsigned char	print_digit;
 	int				contador;
 
-	lnb = (long) nb;
 	len = get_len(nb);
 	contador = 0;
 	while (len > 0)
