@@ -6,7 +6,7 @@
 /*   By: alvmoral <alvmoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 19:50:02 by alvaro            #+#    #+#             */
-/*   Updated: 2024/04/11 21:43:15 by alvmoral         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:08:12 by alvmoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_ptoa_w(unsigned long long nb)
 
 	contador = 0;
 	if (nb == 0)
-		return(write(1, "(nil)", 5));
+		return (write(1, "(nil)", 5));
 	len = get_len_hex(nb);
 	contador += write(1, "0x", 2);
 	while (len > 0x0)

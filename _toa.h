@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOA_H
-# define TOA_H
+#ifndef _TOA_H
+# define _TOA_H
+
 # include <unistd.h>
 # include <limits.h>
 
