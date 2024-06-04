@@ -3,5 +3,6 @@
 
 int	main(void)
 {
-	ft_printf("Primera prueba: %s, %u", "Esto que es", -7);
+	int	x = 9;
+	
 }

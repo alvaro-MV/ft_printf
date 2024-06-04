@@ -48,6 +48,8 @@ int	ft_ptoa_w(unsigned long long nb)
 	int					contador;
 
 	contador = 0;
+	if (nb == 0)
+		return(write(1, "(nil)", 5));
 	len = get_len_hex(nb);
 	contador += write(1, "0x", 2);
 	while (len > 0x0)
